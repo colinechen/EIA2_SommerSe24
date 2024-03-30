@@ -5,5 +5,5 @@ console.log(x)
 */
 
 
-let a: number[] = [7, true, "Hallo"] /* nur Zahlen wegen number*/
-let a: (number | string) [] = [7, 10, "Hallo"]
+let a: number[] = [7, 6, 8] /* nur Zahlen wegen number*/
+let b: (number | string) [] = [7, 10, "Hallo"]
