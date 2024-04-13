@@ -30,7 +30,9 @@ var EventInspector;
         let span = document.querySelector("span");
         span.style.left = x + "px";
         span.style.top = y + "px";
-        span.innerHTML = "mouse_position: " + x + "px" + " " + y + "px" + " " + "target: " + _event.target;
+        span.innerHTML = "mouse position: " + x + "px" + " " + " " +
+            "mouse position:" + y + "px" + " " +
+            "target: " + _event.target;
     }
     function logInfo(_event) {
         console.log(_event);
