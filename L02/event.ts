@@ -3,6 +3,7 @@ namespace EventInspector {
 
     window.addEventListener("load", handleLoad);
       
+
     function handleLoad(_event: Event): void {
 
 
@@ -23,8 +24,7 @@ namespace EventInspector {
       
     let button: HTMLElement = <HTMLElement>document.querySelector("button");
     button.addEventListener("click", customEvent);
-      
-          
+        
     }
       
     function customEvent() {
@@ -35,7 +35,7 @@ namespace EventInspector {
     }
       
 
-    function helloFunction(_event:CustomEvent) {
+    function helloFunction(_event: Event) {
       console.log(_event);
     }
       
@@ -49,7 +49,7 @@ namespace EventInspector {
         span.innerHTML = "mouse_position: " + x + "px" + " " + y + "px" + " " + "target: " + _event.target;
         }
       
-    function logInfo(_event: MouseEvent | KeyboardEvent): void {
+    function logInfo(_event: Event): void {
         console.log(_event);
         console.log(_event.type);
         console.log(_event.currentTarget);
