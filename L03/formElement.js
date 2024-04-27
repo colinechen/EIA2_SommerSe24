@@ -2,71 +2,95 @@
 var Einkaufsliste;
 (function (Einkaufsliste) {
     document.addEventListener('DOMContentLoaded', () => {
-        //  'neu'ausgewählen und Variable zuweisen
         const neuButton = document.querySelector('.neu');
-        //  Event-Listener reagiert auf Klicks auf Button 
         neuButton.addEventListener('click', neuesProdukt);
+        generateContent(Einkaufsliste.data);
+        //Event Listener click erstellt neues Produkt wenn aktiviert
         function neuesProdukt() {
-            // Kommentar in Konsole, wenn neues Produkt hinzugefügt wird
-            console.log("Ein neues Produkt wird hinzugefügt");
-            // Hauptcontainer wird Variable zugewiesen
             const container = document.querySelector('main');
-            // Neues div-Element 
             const neuesDiv = document.createElement('div');
             neuesDiv.className = 'box';
-            // Formularfelder für neues div-Element
+            // Auswahl Containers, in den neues Div erstellt wird wenn event listener auslöst
             neuesDiv.innerHTML = `
                 <form>
-                    Ware
-                    <br>
-                    <input type="text" name="Ware" id="Ware">
-                    <br>
-                    Menge
-                    <br>
-                    <input type="number" name="Menge" id="Menge">
-                    <br>
-                    Einheit
-                    <br>
-                    <input type="text" name="Einheit" id="Einheit">
-                    <br>
-                    Kommentar
-                    <br>
-                    <input type="text" name="kommentar" id="kommentar">
-                    <br>
-                    letzter Kauf
-                    <br>
-                    <input type="date" name="letzter Kauf" id="letzter Kauf">
-                    <br>
-                    gekauft
-                    <input type="checkbox" name="gekauft" id="gekauft">
-                    löschen
-                    <input type="button" name="löschen" class="loeschen">
+                    Ware<br>
+                    <input type="text" name="Ware" id="Ware"><br>
+                    Menge<br>
+                    <input type="number" name="Menge" id="Menge"><br>
+                    Einheit<br>
+                    <input type="text" name="Einheit" id="Einheit"><br>
+                    Kommentar<br>
+                    <input type="text" name="kommentar" id="kommentar"><br>
+                    letzter Kauf<br>
+                    <input type="date" name="letzter Kauf" id="letzterKauf"><br>
+                    gekauft<input type="checkbox" name="gekauft" id="gekauft">
+                    löschen<input type="button" name="löschen" class="loeschen">
                 </form>
-            `;
-            // div-Element wird Hauptcontainer hinzugefügt
+            `; //Bestimmung der inneren HTML der neuen Div 
             if (container) {
                 container.appendChild(neuesDiv);
-            }
-            // Event-Listener für den Löschen-Button
+            } //neuer container wird maincontainer zugewiesen
             const loeschenButton = neuesDiv.querySelector('.loeschen');
             loeschenButton.addEventListener('click', () => {
-                // Kommentar in Konsole, wenn Produkt gelöscht wird
                 console.log("Das Produkt wird gelöscht");
-                // Produkt-Element aus Hauptcontainer entfernen (-> beide vorhanden)
                 if (container && neuesDiv) {
                     container.removeChild(neuesDiv);
-                }
+                } // funktion hinzugefügt -> divs gelöscht
             });
-            // Event-Listener für Eingabefelder
             const inputs = neuesDiv.querySelectorAll('input, select');
             inputs.forEach(input => {
-                // Event-Listener für jedes Eingabefeld
                 input.addEventListener('input', () => {
-                    // Kommentar in Konsole, Wenn Eingabe im Feld
                     console.log(`Eingabe in Feld ${input.id}: Wurde hinzugefügt`);
-                });
+                }); //event handler für eingaben ins neue div
             });
         }
     });
+    //Funktion und Schleife, um Produkt in Liste/Container hinzuzufügen
+    function generateContent(_data) {
+        const container = document.getElementById("Produkt");
+        if (container) {
+            for (let Produkt of _data) {
+                addEintrag(Produkt);
+            }
+        }
+        //Eintrag in Liste erstellen
+        function addEintrag(_data) {
+            const EintragDiv = document.getElementById("Produkt");
+            //ID für neuen Eintrag
+            const eintragId = "Eintrag_" + Date.now();
+            //HTML für neuen Eintrag
+            const newEintrag = `
+            <div class="Ware" id=${eintragId}>
+                <span class="Produkt">${_data.Ware}</span>
+                <div class="MengeDiv">
+                    <label for="Menge${eintragId}">Menge</label>
+                    <input type="number" name="Ware" id="Menge${eintragId}" list="numbers" class="smallerInput" value="${_data.Menge}">
+                </div>
+                <div class="letzterKaufDiv">
+                    <span> </span>
+                    <span id="letzterKauf${eintragId}">${_data.letzterKauf}</span>
+                </div>
+                <div class="KommentarDiv">
+                    <label for="Kommentar${eintragId}">Kommentar</label>
+                    <input type="textarea" name="Kommentar" id="Kommentar${eintragId}" value="${_data.Kommentar}">
+                </div>
+                <div class="gekauftDiv">
+                    <label for="gekauft${eintragId}">gekauft</label>
+                    <input type="checkbox" name="gekauft" id="gekauft${eintragId}" ${_data.gekauft ? "gekauft" : ""}>
+                </div>
+                <button type="button" class="löschen" id="löschen${eintragId}">-</button>
+            </div>
+        `;
+            //Eintrag in DOM einfügen
+            EintragDiv.insertAdjacentHTML("beforeend", newEintrag);
+            //LÖschen-Button auswählen + Event Handling für Click
+            let newEintragButton = document.querySelector("#löschen" + eintragId);
+            function deleteEintrag(_event) {
+                let newEntry = document.querySelector("#" + eintragId);
+                newEntry.remove();
+            }
+            newEintragButton.addEventListener("click", deleteEintrag);
+        }
+    }
 })(Einkaufsliste || (Einkaufsliste = {}));
 //# sourceMappingURL=formElement.js.map
