@@ -19,7 +19,7 @@ var GenerativeKunst;
         // generierung der Kunst
         generateArt(crc2, canvas);
     }
-    // zufällige Farbe, entweder lila oder türkis
+    // wählt zufällig zwischen lila und türkis
     function getRandomColor() {
         let colors = ['#c084fc', '#5ce1e6']; //Lila/Türkis
         return colors[Math.floor(Math.random() * colors.length)];
