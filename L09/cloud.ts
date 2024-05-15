@@ -8,6 +8,8 @@ namespace classes {
             this.y = _y;
         }
 
+        
+
         move():void{
             console.log("cloud move");
             this.x +=1;
@@ -30,6 +32,10 @@ namespace classes {
         
             crc2.restore();
         }
+
+        
         
         }
     }
+
+

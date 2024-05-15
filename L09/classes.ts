@@ -3,6 +3,7 @@ namespace classes{
     
         export let crc2: CanvasRenderingContext2D;
         let clouds: Cloud[] = [];
+       // let bushes:Bush[] = [];
        
         function handleLoad(_event: Event): void {
 
@@ -11,11 +12,18 @@ namespace classes{
                 return;
             crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
             
+
             //Wolke zufällig
-            for (let i: number = 0; i < 10; i++){
+            for (let i: number = 0; i < 6; i++){
                 let cloud: Cloud = new Cloud(Math.random() * 500, Math.random() * 200)
                 clouds.push(cloud);
             }
+
+      /*      let bush: Bush = new Bush();
+        console.log(bush);
+        bush.draw();
+        bushes.push(bush); */
+        
     
     
             drawBackround();

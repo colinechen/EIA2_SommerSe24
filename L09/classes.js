@@ -3,16 +3,21 @@ var classes;
 (function (classes) {
     window.addEventListener("load", handleLoad);
     let clouds = [];
+    // let bushes:Bush[] = [];
     function handleLoad(_event) {
         let canvas = document.querySelector("canvas");
         if (!canvas)
             return;
         classes.crc2 = canvas.getContext("2d");
         //Wolke zufällig
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 6; i++) {
             let cloud = new classes.Cloud(Math.random() * 500, Math.random() * 200);
             clouds.push(cloud);
         }
+        /*      let bush: Bush = new Bush();
+          console.log(bush);
+          bush.draw();
+          bushes.push(bush); */
         drawBackround();
         setInterval(animate, 40);
     }
