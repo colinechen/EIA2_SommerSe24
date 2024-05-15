@@ -54,7 +54,7 @@ var classes;
         classes.crc2.fill();
         // 2. Berg
         classes.crc2.beginPath();
-        classes.crc2.moveTo(150, 250);
+        classes.crc2.moveTo(100, 250);
         classes.crc2.lineTo(250, 100); // Erste Ecke 
         classes.crc2.lineTo(400, 250); // Zweite Ecke 
         classes.crc2.closePath();

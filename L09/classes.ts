@@ -69,7 +69,7 @@ namespace classes{
 
             // 2. Berg
             crc2.beginPath();
-            crc2.moveTo(150, 250);
+            crc2.moveTo(100, 250);
             crc2.lineTo(250, 100); // Erste Ecke 
             crc2.lineTo(400, 250); // Zweite Ecke 
             crc2.closePath();
