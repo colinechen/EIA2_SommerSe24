@@ -1,22 +1,183 @@
-namespace classes {
+namespace classes{
     window.addEventListener("load", handleLoad);
-
-    function handleLoad(_event: Event): void {
+    
+        export let crc2: CanvasRenderingContext2D;
+        let clouds: Cloud[] = [];
+       
+        function handleLoad(_event: Event): void {
+    
+            // Zugriff auf das Canvas-Element
+            let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
+            if (!canvas)
+                return;
+            crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
+            
+            //Cloud random auf x und y zeichnen
+            for (let i: number = 0; i < 10; i++){
+                let cloud: Cloud = new Cloud(Math.random() * 500, Math.random() * 200)
+                clouds.push(cloud);
+            }
+    
+    
+            drawBackround();
+            setInterval(animate, 40);
+        }   
+    
+        function animate(): void {
+                console.log("animate");
+                drawBackround();
+            for (let i: number = 0; i < 10; i++) {
+                clouds[i].move();
+                clouds[i].draw();
+            }
+        }
+    
+        function drawBackround(): void {
+                fillBackground();
+                drawMountain();
+                drawPond();
+            }
+    
+        // Hintergrund
+        function fillBackground(): void {
         
-        let canvas = document.querySelector<HTMLCanvasElement>("canvas");
+            // Himmel
+            let skycolor: string = "#48BCE1"; 
+            crc2.fillStyle = skycolor;
+            crc2.fillRect(0, 0, 700, 250);
 
-        // überprüfen, ob Canvas gefunden wurde
-        if (!canvas) {
-            console.error("Canvas-Element wurde nicht gefunden!");
-            return;
+            // Wiese
+            let meadowcolor: string = "#008000"; 
+            crc2.fillStyle = meadowcolor;
+            crc2.fillRect(0, 250, 700, 350);
+        }
+    
+    
+        //BERGE
+        function drawMountain(): void {
+
+            // 1. Berg
+            crc2.beginPath();
+            crc2.moveTo(-50, 250);
+            crc2.lineTo(100, 150); // Erste Ecke 
+            crc2.lineTo(250, 250); // Zweite Ecke 
+            crc2.closePath();
+
+            let mountainone: string = "#808080"; 
+            crc2.fillStyle = mountainone;
+            crc2.fill();
+
+            // 2. Berg
+            crc2.beginPath();
+            crc2.moveTo(150, 250);
+            crc2.lineTo(250, 100); // Erste Ecke 
+            crc2.lineTo(400, 250); // Zweite Ecke 
+            crc2.closePath();
+    
+            let mountaintwo: string = "#808080"; 
+            crc2.fillStyle = mountaintwo;
+            crc2.fill();
+
+            // 3. Berg
+            crc2.beginPath();
+            crc2.moveTo(300, 250);
+            crc2.lineTo(450, 50); // Erste Ecke 
+            crc2.lineTo(600, 250); // Zweite Ecke 
+            crc2.closePath();
+        
+            let mountainthree: string = "#808080"; 
+            crc2.fillStyle = mountainthree;
+            crc2.fill();
+
+             // 4. Berg
+             crc2.beginPath();
+             crc2.moveTo(550, 250);
+             crc2.lineTo(650, 100); // Erste Ecke 
+             crc2.lineTo(750, 250); // Zweite Ecke 
+             crc2.closePath();
+         
+             let mountainfour: string = "#808080"; 
+             crc2.fillStyle = mountainfour;
+             crc2.fill();
         }
 
-        let crc2 = canvas.getContext("2d");
-
-        if (!crc2) {
-            console.error("2D-Kontext konnte nicht initialisiert werden");
-            return;
+            //TEICH
+        function drawPond(): void {
+            // Größe des Teichs
+            let centerX: number = 350;
+            let centerY: number = 375;
+            let radiusX: number = 225; 
+            let radiusY: number = 70;  
+        
+            // Teich zeichnen
+            crc2.beginPath();
+            crc2.ellipse(centerX, centerY, radiusX, radiusY, 0, 0, 2 * Math.PI);
+            crc2.closePath();
+        
+            // Farbe
+            let pondcolor: string = "#87CEEB";
+            crc2.fillStyle = pondcolor;
+            crc2.fill();
         }
+        
+    }
+        
+    
+        
+        
+        
+        
+        
+        
+        
+        
+    
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+    window.addEventListener("load", handleLoad);
+    
+        export let crc2: CanvasRenderingContext2D;
+        let clouds: Cloud[] = [];
+       
+        function handleLoad(_event: Event): void {
+    
+            // Zugriff auf das Canvas-Element
+            let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
+            if (!canvas)
+                return;
+            crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
+            
+            //Cloud random auf x und y zeichnen
+            for (let i: number = 0; i < 10; i++){
+                let cloud: Cloud = new Cloud(Math.random() * 500, 50 + Math.random() * 200)
+                clouds.push(cloud);
+            }
+
+        
+        setInterval(animate, 40);
+
+        function animate(): void {
+            console.log("animate");
+            
+        for (let i: number = 0; i < 10; i++) {
+            clouds[i].move();
+            clouds[i].draw();
+        }
+    }
+       
+
 
         // Wiese
         crc2.fillStyle = "#008000"; //grün
@@ -57,7 +218,4 @@ namespace classes {
     }
 
     
-
-   
-
-}
+} */
