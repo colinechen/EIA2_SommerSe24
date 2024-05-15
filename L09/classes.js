@@ -24,7 +24,7 @@ var classes;
     function animate() {
         console.log("animate");
         drawBackround();
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 6; i++) {
             clouds[i].move();
             clouds[i].draw();
         }

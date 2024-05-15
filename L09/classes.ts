@@ -33,7 +33,7 @@ namespace classes{
         function animate(): void {
                 console.log("animate");
                 drawBackround();
-            for (let i: number = 0; i < 10; i++) {
+            for (let i: number = 0; i < 6; i++) {
                 clouds[i].move();
                 clouds[i].draw();
             }
