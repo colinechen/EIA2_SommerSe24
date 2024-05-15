@@ -4,12 +4,11 @@ var classes;
     window.addEventListener("load", handleLoad);
     let clouds = [];
     function handleLoad(_event) {
-        // Zugriff auf das Canvas-Element
         let canvas = document.querySelector("canvas");
         if (!canvas)
             return;
         classes.crc2 = canvas.getContext("2d");
-        //Cloud random auf x und y zeichnen
+        //Wolke zufällig
         for (let i = 0; i < 10; i++) {
             let cloud = new classes.Cloud(Math.random() * 500, Math.random() * 200);
             clouds.push(cloud);

@@ -5,14 +5,13 @@ namespace classes{
         let clouds: Cloud[] = [];
        
         function handleLoad(_event: Event): void {
-    
-            // Zugriff auf das Canvas-Element
+
             let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
             if (!canvas)
                 return;
             crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
             
-            //Cloud random auf x und y zeichnen
+            //Wolke zufällig
             for (let i: number = 0; i < 10; i++){
                 let cloud: Cloud = new Cloud(Math.random() * 500, Math.random() * 200)
                 clouds.push(cloud);
