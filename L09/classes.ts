@@ -3,7 +3,10 @@ namespace classes{
     
         export let crc2: CanvasRenderingContext2D;
         let clouds: Cloud[] = [];
-       // let bushes:Bush[] = [];
+        let bushes: Bush[] = [];
+        let huts: Hut[] = [];
+        let ducks: Duck[] = [];
+        let trees: Tree[] = [];
        
         function handleLoad(_event: Event): void {
 
@@ -18,11 +21,33 @@ namespace classes{
                 let cloud: Cloud = new Cloud(Math.random() * 500, Math.random() * 200)
                 clouds.push(cloud);
             }
+            //Enten 
+            for (let i: number = 0; i < 5; i++) {
+                let duck: Duck = new Duck(Math.random() * 500, 250 + Math.random() * 200);
+                ducks.push(duck);
+            }
+            
 
-      /*      let bush: Bush = new Bush();
-        console.log(bush);
-        bush.draw();
-        bushes.push(bush); */
+            //Busch
+            let bush: Bush = new Bush(575, 400);
+               bush.draw();
+               bushes.push(bush);
+
+            //Hütte
+            let hut: Hut = new Hut(150, 200);
+               hut.draw();
+               huts.push(hut);
+
+            //Enten
+            let duck: Duck = new Duck(100, 500,);
+               duck.draw();
+               ducks.push(duck);
+               
+
+            //Bäume
+            let tree: Tree = new Tree(600, 275);
+               tree.draw();
+               trees.push(tree); 
         
     
     
@@ -37,6 +62,20 @@ namespace classes{
                 clouds[i].move();
                 clouds[i].draw();
             }
+            for (let i: number = 0; i < 1; i++) {
+                bushes[i].draw();
+            }
+            for (let i: number = 0; i < 1; i++) {
+                huts[i].draw();
+            }
+            for (let i: number = 0; i < 1; i++) {
+                trees[i].draw(); 
+            }
+            for (let i: number = 0; i < ducks.length; i++) {
+                ducks[i].move();
+                ducks[i].draw();
+            }
+
         }
     
         function drawBackround(): void {
@@ -128,101 +167,3 @@ namespace classes{
         }
         
     }
-        
-    
-        
-        
-        
-        
-        
-        
-        
-        
-    
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-    window.addEventListener("load", handleLoad);
-    
-        export let crc2: CanvasRenderingContext2D;
-        let clouds: Cloud[] = [];
-       
-        function handleLoad(_event: Event): void {
-    
-            // Zugriff auf das Canvas-Element
-            let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
-            if (!canvas)
-                return;
-            crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
-            
-            //Cloud random auf x und y zeichnen
-            for (let i: number = 0; i < 10; i++){
-                let cloud: Cloud = new Cloud(Math.random() * 500, 50 + Math.random() * 200)
-                clouds.push(cloud);
-            }
-
-        
-        setInterval(animate, 40);
-
-        function animate(): void {
-            console.log("animate");
-            
-        for (let i: number = 0; i < 10; i++) {
-            clouds[i].move();
-            clouds[i].draw();
-        }
-    }
-       
-
-
-        // Wiese
-        crc2.fillStyle = "#008000"; //grün
-        crc2.fillRect(0, canvas.height / 2, canvas.width, canvas.height / 2);
-
-        //Himmel
-        crc2.fillStyle = "#87CEEB"; //blau
-        crc2.fillRect(0, 0, canvas.width, canvas.height / 2);
-
-        // Berge zeichnen
-        drawMountain(crc2, -50, canvas.height / 2, 350, 250);
-        drawMountain(crc2, 200, canvas.height / 2, 250, 225);
-        drawMountain(crc2, 400, canvas.height / 2, 300, 150);
-        drawMountain(crc2, 575, canvas.height / 2, 300, 250);
-
-        function drawMountain(crc2: CanvasRenderingContext2D, x: number, y: number, width: number, height: number) {
-            crc2.fillStyle = "#808080"; // Grau
-            crc2.beginPath();
-            crc2.moveTo(x, y);
-            crc2.lineTo(x + width / 2, y - height);
-            crc2.lineTo(x + width, y);
-            crc2.closePath();
-            crc2.fill();
-        }
-
-        //Teich zeichnen
-        drawPond(crc2, canvas.width / 2, (canvas.height / 2) + (canvas.height / 4));
-
-        function drawPond(crc2: CanvasRenderingContext2D, centerX: number, centerY: number) {
-            crc2.fillStyle = "#74D0f1"; // blau
-            let radiusX = 350;
-            let radiusY = 100;
-            crc2.beginPath();
-            crc2.ellipse(centerX, centerY, radiusX, radiusY, 0, 0, Math.PI * 2);
-            crc2.closePath();
-            crc2.fill();
-        }
-    }
-
-    
-} */
