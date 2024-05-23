@@ -31,7 +31,7 @@ namespace classes {
         }
 
         // Enten
-        for (let i: number = 0; i < 6; i++) {
+        for (let i: number = 0; i < 5; i++) {
             let duck: Duck = new Duck(200 + Math.random() * 300, 300 + Math.random() * 150); // Position im pond
             ducks.push(duck);
         }
@@ -112,6 +112,7 @@ namespace classes {
 
     // Hintergrund
     function fillBackground(): void {
+
         // Himmel
         let skycolor: string = "#48BCE1";
         crc2.fillStyle = skycolor;

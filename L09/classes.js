@@ -25,7 +25,7 @@ var classes;
             birds.push(bird);
         }
         // Enten
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < 5; i++) {
             let duck = new classes.Duck(200 + Math.random() * 300, 300 + Math.random() * 150); // Position im pond
             ducks.push(duck);
         }
