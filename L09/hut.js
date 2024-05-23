@@ -14,18 +14,18 @@ var classes;
             classes.crc2.save();
             classes.crc2.translate(this.x, this.y);
             // Hütte zeichnen
-            // Körper der Hütte
-            let hutColor = "#8B4513";
-            classes.crc2.fillStyle = hutColor; // Braun
+            // Körper 
+            let hutColor = "#553b32";
+            classes.crc2.fillStyle = hutColor;
             classes.crc2.fillRect(0, 40, 70, 50); // Rechteck
-            // Dach der Hütte
+            // Dach 
             classes.crc2.beginPath();
             classes.crc2.moveTo(0, 40); // Linke Ecke 
             classes.crc2.lineTo(35, 0); // Spitze 
             classes.crc2.lineTo(70, 40); // Rechte 
             classes.crc2.closePath();
-            let hutRoof = "#A52A2A";
-            classes.crc2.fillStyle = hutRoof; // Dunkleres Braun
+            let hutRoof = "#3d2b24";
+            classes.crc2.fillStyle = hutRoof;
             classes.crc2.fill();
             classes.crc2.restore();
         }

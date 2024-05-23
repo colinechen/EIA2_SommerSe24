@@ -18,20 +18,20 @@ namespace classes {
     
                 // Hütte zeichnen
     
-                // Körper der Hütte
-                let hutColor: string = "#8B4513";
-                crc2.fillStyle = hutColor; // Braun
+                // Körper 
+                let hutColor: string = "#553b32";
+                crc2.fillStyle = hutColor;
                 crc2.fillRect(0, 40, 70, 50); // Rechteck
     
-                // Dach der Hütte
+                // Dach 
                 crc2.beginPath();
                 crc2.moveTo(0, 40); // Linke Ecke 
                 crc2.lineTo(35, 0); // Spitze 
                 crc2.lineTo(70, 40); // Rechte 
                 crc2.closePath();
 
-                let hutRoof: string = "#A52A2A";
-                crc2.fillStyle = hutRoof; // Dunkleres Braun
+                let hutRoof: string = "#3d2b24";
+                crc2.fillStyle = hutRoof;
                 crc2.fill();
     
                 crc2.restore();

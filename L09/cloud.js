@@ -11,6 +11,9 @@ var classes;
         move() {
             console.log("cloud move");
             this.x += 1;
+            if (this.x > 700) { // Canvas-Breite
+                this.x = -100; // Wolke fängt links an
+            }
         }
         draw() {
             classes.crc2.save();

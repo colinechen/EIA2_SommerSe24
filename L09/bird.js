@@ -1,48 +1,36 @@
 "use strict";
 var classes;
 (function (classes) {
-    class Duck {
+    class Bird {
         x;
         y;
-        direction;
         speed;
-        constructor(_x, _y) {
+        constructor(_x, _y, _speed) {
             this.x = _x;
             this.y = _y;
-            this.direction = 1; // Richtung
-            this.speed = 2; // Geschwindigkeit
+            this.speed = _speed;
         }
         move() {
-            // begrenzung Teich (x)
-            let pondLeft = 175; // Links
-            let pondRight = 500; // Rechts
-            // Ente bewegt innerhalb teich
-            if (this.x <= pondLeft || this.x >= pondRight) {
-                this.direction *= -1; // Richtung umkehren
-            }
-            this.x += this.direction * this.speed; // Bewegung
-            // Begrenzung y-Richtung 
-            if (this.y < 325) { // untere Grenze
-                this.y = 325;
-            }
-            else if (this.y > 400) { // obere Grenze
-                this.y = 400;
+            console.log("bird move");
+            this.x += this.speed; // Geschwindigkeit
+            if (this.x > 700) { // Canvas-Breite 
+                this.x = -100; // Vogel auf linker seite
+                this.y = Math.random() * 150 + 50; // zufällige Positionierung
             }
         }
         draw() {
             classes.crc2.save();
             classes.crc2.translate(this.x, this.y);
-            classes.crc2.scale(this.direction, 1); // Spiegeln bei wechsel
             // Körper
             classes.crc2.beginPath();
             classes.crc2.ellipse(0, 0, 10, 5, 0, 0, Math.PI * 2);
-            classes.crc2.fillStyle = "yellow";
+            classes.crc2.fillStyle = "#92664A";
             classes.crc2.fill();
             classes.crc2.closePath();
-            // Kopf
+            // Kopf 
             classes.crc2.beginPath();
             classes.crc2.arc(7, -5, 4, 0, Math.PI * 2);
-            classes.crc2.fillStyle = "yellow";
+            classes.crc2.fillStyle = "#92664A";
             classes.crc2.fill();
             classes.crc2.closePath();
             // Schnabel 
@@ -65,11 +53,11 @@ var classes;
             classes.crc2.lineTo(2, -5);
             classes.crc2.lineTo(7, 0);
             classes.crc2.closePath();
-            classes.crc2.fillStyle = "orange";
+            classes.crc2.fillStyle = "#5A270F";
             classes.crc2.fill();
             classes.crc2.restore();
         }
     }
-    classes.Duck = Duck;
+    classes.Bird = Bird;
 })(classes || (classes = {}));
-//# sourceMappingURL=duck.js.map
+//# sourceMappingURL=bird.js.map
