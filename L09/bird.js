@@ -1,4 +1,4 @@
-"use strict";
+
 var classes;
 (function (classes) {
     class Bird extends classes.Moveable {
