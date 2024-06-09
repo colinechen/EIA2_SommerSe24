@@ -1,20 +1,15 @@
 "use strict";
 var classes;
 (function (classes) {
-    class Bird {
-        x;
-        y;
-        speed;
+    class Bird extends classes.Moveable {
         constructor(_x, _y, _speed) {
-            this.x = _x;
-            this.y = _y;
-            this.speed = _speed;
+            super(_x, _y, _speed);
         }
         move() {
             console.log("bird move");
-            this.x += this.speed; // Geschwindigkeit
-            if (this.x > 700) { // Canvas-Breite 
-                this.x = -100; // Vogel auf linker seite
+            this.x += this.speed.x; // Geschwindigkeit in x-Richtung
+            if (this.x > 700) { //Canvas ende 
+                this.x = -100; // Vogel auf linker Seite
                 this.y = Math.random() * 150 + 50; // zufällige Positionierung
             }
         }
@@ -27,13 +22,13 @@ var classes;
             classes.crc2.fillStyle = "#92664A";
             classes.crc2.fill();
             classes.crc2.closePath();
-            // Kopf 
+            // Kopf
             classes.crc2.beginPath();
             classes.crc2.arc(7, -5, 4, 0, Math.PI * 2);
             classes.crc2.fillStyle = "#92664A";
             classes.crc2.fill();
             classes.crc2.closePath();
-            // Schnabel 
+            // Schnabel
             classes.crc2.beginPath();
             classes.crc2.moveTo(11, -5);
             classes.crc2.lineTo(17, -7);
@@ -41,13 +36,13 @@ var classes;
             classes.crc2.closePath();
             classes.crc2.fillStyle = "orange";
             classes.crc2.fill();
-            // Auge 
+            // Auge
             classes.crc2.beginPath();
             classes.crc2.arc(9, -5, 1.5, 0, Math.PI * 2);
             classes.crc2.fillStyle = "black";
             classes.crc2.fill();
             classes.crc2.closePath();
-            // Flügel 
+            // Flügel
             classes.crc2.beginPath();
             classes.crc2.moveTo(-3, 0);
             classes.crc2.lineTo(2, -5);
@@ -60,4 +55,4 @@ var classes;
     }
     classes.Bird = Bird;
 })(classes || (classes = {}));
-//# sourceMappingURL=bird.js.map
+//# sourceMappingURL=Bird.js.map

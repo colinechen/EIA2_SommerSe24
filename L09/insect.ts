@@ -1,28 +1,20 @@
 namespace classes {
-    export class Insect {
-        x: number;
-        y: number;
-        speedX: number;
-        speedY: number;
+    export class Insect extends Moveable {
 
         constructor(_x: number, _y: number) {
-            this.x = _x;
-            this.y = _y;
-            this.speedX = Math.random() * 2 + 1; // zufällige Geschwindigkeit x
-            this.speedY = Math.random() * 2 - 1; // Zufällige Geschwindigkeit y
+            let speed = new Vector(Math.random() * 2 + 1, Math.random() * 2 - 1); // zufällige Geschwindigkeit
+            super(_x, _y, speed);
         }
 
         move(): void {
             console.log("insect move");
-            this.x += this.speedX;
-            this.y += this.speedY;
+            this.x += this.speed.x;
+            this.y += this.speed.y;
 
-            
             if (this.x > 700 || this.y < 0 || this.y > 600) { 
-                this.x = -50; // insekt fängt links wieder an
+                this.x = -50; // Insekt fängt links wieder an
                 this.y = Math.random() * 600; // zufällige Position y
-                this.speedX = Math.random() * 2 + 1; //zufällige Geschwindigkeit x
-                this.speedY = Math.random() * 2 - 1; // zufällige Geschwindigkeit y
+                this.speed = new Vector(Math.random() * 2 + 1, Math.random() * 2 - 1); // zufällige Geschwindigkeit
             }
         }
 

@@ -1,16 +1,13 @@
 "use strict";
 var classes;
 (function (classes) {
-    class Cloud {
-        x;
-        y;
-        constructor(_x, _y) {
-            this.x = _x;
-            this.y = _y;
+    class Cloud extends classes.Moveable {
+        constructor(_x, _y, _speed) {
+            super(_x, _y, _speed);
         }
         move() {
-            console.log("cloud move");
             this.x += 1;
+            //  super.move();
             if (this.x > 700) { // Canvas-Breite
                 this.x = -100; // Wolke fängt links an
             }
@@ -20,9 +17,9 @@ var classes;
             classes.crc2.translate(this.x, this.y);
             // Wolke zeichnen
             classes.crc2.beginPath();
-            classes.crc2.arc(30, 20, 20, 0, Math.PI * 2); // Links
-            classes.crc2.arc(60, 25, 25, 0, Math.PI * 2); // Mitte
-            classes.crc2.arc(90, 20, 20, 0, Math.PI * 2); // Rechts
+            classes.crc2.arc(30, 20, 20, 0, Math.PI * 2); // links
+            classes.crc2.arc(60, 25, 25, 0, Math.PI * 2); // mitte
+            classes.crc2.arc(90, 20, 20, 0, Math.PI * 2); // rechts
             classes.crc2.bezierCurveTo(100, 40, 50, 45, 30, 20);
             let cloudcolor = "white";
             classes.crc2.fillStyle = cloudcolor;
@@ -32,4 +29,4 @@ var classes;
     }
     classes.Cloud = Cloud;
 })(classes || (classes = {}));
-//# sourceMappingURL=cloud.js.map
+//# sourceMappingURL=Cloud.js.map

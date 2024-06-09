@@ -1,27 +1,22 @@
 "use strict";
 var classes;
 (function (classes) {
-    class Duck {
-        x;
-        y;
+    class Duck extends classes.Moveable {
         direction;
-        speed;
-        constructor(_x, _y) {
-            this.x = _x;
-            this.y = _y;
-            this.direction = 1; // Richtung
-            this.speed = 2; // Geschwindigkeit
+        constructor(_x, _y, _direction, _speed) {
+            super(_x, _y, _speed);
+            this.direction = _direction;
         }
         move() {
-            // begrenzung Teich (x)
-            let pondLeft = 175; // Links
-            let pondRight = 500; // Rechts
+            // Begrenzung Teich
+            let pondLeft = 185;
+            let pondRight = 500;
             // Ente bewegt innerhalb teich
             if (this.x <= pondLeft || this.x >= pondRight) {
-                this.direction *= -1; // Richtung umkehren
+                this.direction.x *= -1; // Richtung umkehren
             }
-            this.x += this.direction * this.speed; // Bewegung
-            // Begrenzung y-Richtung 
+            this.x += this.direction.x * this.speed.x; // Bewegung in x-Richtung
+            // Begrenzung y-Richtung
             if (this.y < 325) { // untere Grenze
                 this.y = 325;
             }
@@ -32,7 +27,7 @@ var classes;
         draw() {
             classes.crc2.save();
             classes.crc2.translate(this.x, this.y);
-            classes.crc2.scale(this.direction, 1); // Spiegeln bei wechsel
+            classes.crc2.scale(this.direction.x, 1); // Spiegeln bei Richtungswechsel
             // Körper
             classes.crc2.beginPath();
             classes.crc2.ellipse(0, 0, 10, 5, 0, 0, Math.PI * 2);
@@ -45,7 +40,7 @@ var classes;
             classes.crc2.fillStyle = "yellow";
             classes.crc2.fill();
             classes.crc2.closePath();
-            // Schnabel 
+            // Schnabel
             classes.crc2.beginPath();
             classes.crc2.moveTo(11, -5);
             classes.crc2.lineTo(17, -7);
@@ -53,13 +48,13 @@ var classes;
             classes.crc2.closePath();
             classes.crc2.fillStyle = "orange";
             classes.crc2.fill();
-            // Auge 
+            // Auge
             classes.crc2.beginPath();
             classes.crc2.arc(9, -5, 1.5, 0, Math.PI * 2);
             classes.crc2.fillStyle = "black";
             classes.crc2.fill();
             classes.crc2.closePath();
-            // Flügel 
+            // Flügel
             classes.crc2.beginPath();
             classes.crc2.moveTo(-3, 0);
             classes.crc2.lineTo(2, -5);
@@ -72,4 +67,4 @@ var classes;
     }
     classes.Duck = Duck;
 })(classes || (classes = {}));
-//# sourceMappingURL=duck.js.map
+//# sourceMappingURL=Duck.js.map
